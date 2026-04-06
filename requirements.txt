@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+libgen-api-enhanced
+jinja2
+python-multipart
+
