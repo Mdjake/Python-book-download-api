@@ -465,7 +465,7 @@ def help_page():
 def search_books(
     q: str = Query(..., description="Search query (title, author, keyword)"),
     type: Optional[str] = Query("title", description="Search type: title (default) | author"),
-    limit: Optional[int] = Query(3, ge=1, le=100, description="Number of results (1–100)"),
+    limit: Optional[int] = Query(5, ge=1, le=100, description="Number of results (1–100)"),
     format: Optional[str] = Query(None, description="File format filter: pdf, epub, mobi, etc."),
     year: Optional[str] = Query(None, description="Year filter, e.g. 2020 or 200 for 2000s"),
     language: Optional[str] = Query(None, description="Language filter, e.g. English"),
@@ -533,6 +533,7 @@ def search_books(
             "pages":     book.pages     or "",
             "link":      link           or "",
             "link_type": link_type      or "",
+            "developer": "t.me/the_only_one_romeo",
         })
 
     return JSONResponse(content={
@@ -562,7 +563,8 @@ def root():
         "message": "LibGen Search API is running.",
         "docs":    "/help",
         "search":  "/search?q=your+query",
-        "swagger": "/docs",
+        "developer": "t.me/the_only_one_romeo",
+        
     }
 if __name__ == "__main__":
     import uvicorn
